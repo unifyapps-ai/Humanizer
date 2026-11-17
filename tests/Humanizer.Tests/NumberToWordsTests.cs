@@ -49,6 +49,16 @@ public class NumberToWordsTests
         Assert.Equal(words, number.ToOrdinalWords());
 
     [Theory]
+    [InlineData(1, "first")]
+    [InlineData(2, "second")]
+    [InlineData(3, "third")]
+    [InlineData(11, "eleventh")]
+    [InlineData(21, "twenty-first")]
+    [InlineData(100, "hundredth")]
+    public void ToOrdinalWords_EnglishIntegers(int number, string expected) =>
+        Assert.Equal(expected, number.ToOrdinalWords());
+
+    [Theory]
     [InlineData(1021, "en-US", "thousand and twenty-first")]
     [InlineData(21, "ar", "الحادي و العشرون")]
     [InlineData(1112, "ru", "одна тысяча сто двенадцатый")]
